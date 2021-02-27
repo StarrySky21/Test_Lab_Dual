@@ -1,12 +1,18 @@
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.Properties;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        String input = "C:\\Users\\Veronika\\Desktop\\test_lab\\src\\main\\resources\\input.txt";
+        File file = new File("src\\main\\resources\\language.properties");
+
+//создаем объект Properties и загружаем в него данные из файла.
+        Properties properties = new Properties();
+        properties.load(new FileReader(file));
+
+//получаем значения свойств из объекта Properties
+        String input = properties.getProperty("lang");
+
         Conversion con = new Conversion();
-        con.textFile(input);
+        con.makeTimetable(input);
     }
 }

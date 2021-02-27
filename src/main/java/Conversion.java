@@ -13,14 +13,14 @@ public class Conversion {
     Conversion() {
     }
 
-    public void textFile(String input) throws IOException {
+    public void makeTimetable(String input) throws IOException {
         /*работа с файлом: чтение и запись в новый была вынесена в отдельный класс, здесь создается
-        * объект это класса и вызов метода чтения*/
+         * объект это класса и вызов метода чтения*/
         TextFile file = new TextFile();
         String[] a = file.readFile(input).toArray(new String[file.readFile(input).size()]);
         /*для дальнейшей работы я приняла решение разделить строки на 3 массива
-        * ниже в цикле выполняется первое условие нахождение эффективного времени:
-        * разница больше часа не учитывается.*/
+         * ниже в цикле выполняется первое условие нахождение эффективного времени:
+         * разница больше часа не учитывается.*/
         List<String> newList = new ArrayList<>();
         for (int i = 0; i < a.length; i++) {
             String[] words = a[i].split(" ");  /*название компании*/
@@ -70,9 +70,8 @@ public class Conversion {
     }
 
     /*метод вычисляет есть ли разница между временем отправки и прибытия больше часа
-    * в качестве аргумента принимает 2 числовых значения ( время отправлени и прибытия, переведенное в минуты)*/
-    public int compareHours(int a1, int a2)
-    {
+     * в качестве аргумента принимает 2 числовых значения ( время отправлени и прибытия, переведенное в минуты)*/
+    public int compareHours(int a1, int a2) {
         if ((a1 - a2) >= 60 || (a2 - a1) >= 60) {
             return 0;
         } else {
@@ -126,7 +125,7 @@ public class Conversion {
 
     /*метод, позволяющий сформировать конечный список с эфективным временем. принимает в качестве аргумента 2 списка:
      с значениями после выполнения условия "меньше часа" и с индексами,что не удовлетворяют оставшимся условиям эфективности*/
-    public List<String> selectEffictiveTime(List<Integer> tempList, List<String> newList){
+    public List<String> selectEffictiveTime(List<Integer> tempList, List<String> newList) {
         /*список с индексами нужно отсортировать и убрать повторяющиеся элементы. конвертируем в set и обратно в list*/
         Set<Integer> index = new HashSet<>();
         index.addAll(tempList);
